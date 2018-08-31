@@ -1,0 +1,157 @@
+
+    Jt = ((Omega - OmegaZ)*sqrt(f)*
+         (-(((3*mu*r*r*(3 - 4*(f) + f*f +
+                     2*log_f)*sin_iota*sin_theta*
+                   (-(cos_theta*cos_phi*sin_iota) - cos_iota*sin_theta)*sin_phi)/(8.*M*M*M) +
+                (3*mu*r*r*cos_theta*
+                   (3 - 4*(f) + f*f + 2*log_f)*
+                   sin_iota*(cos_iota*cos_theta - cos_phi*sin_iota*sin_theta)*sin_phi)/
+                 (8.*M*M*M))*((cos_theta*(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta)*
+                   sin_phi)/
+                 (pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                   sin_theta*sin_theta*sin_phi*sin_phi) -
+                (sin_theta*(cos_iota*cos_theta*cos_phi - sin_iota*sin_theta)*sin_phi)/
+                 (pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                   sin_theta*sin_theta*sin_phi*sin_phi))) +
+           (3*mu*r*r*(3 - 4*(f) + f*f +
+                2*log_f)*(-(cos_theta*cos_phi*sin_iota) - cos_iota*sin_theta)*
+              (cos_iota*cos_theta - cos_phi*sin_iota*sin_theta)*
+              (-((cos_phi*sin_theta*(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta)*
+                     (2*(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta)*
+                        (cos_iota*cos_theta*cos_phi - sin_iota*sin_theta) +
+                       2*cos_theta*sin_theta*sin_phi*sin_phi))/
+                   pow(pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                     sin_theta*sin_theta*sin_phi*sin_phi,2)) -
+                (cos_iota*sin_theta*sin_theta*sin_phi*sin_phi*
+                   (2*(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta)*
+                      (cos_iota*cos_theta*cos_phi - sin_iota*sin_theta) +
+                     2*cos_theta*sin_theta*sin_phi*sin_phi))/
+                 pow(pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                   sin_theta*sin_theta*sin_phi*sin_phi,2) +
+                (cos_theta*cos_phi*(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta))/
+                 (pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                   sin_theta*sin_theta*sin_phi*sin_phi) +
+                (cos_phi*sin_theta*(cos_iota*cos_theta*cos_phi - sin_iota*sin_theta))/
+                 (pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                   sin_theta*sin_theta*sin_phi*sin_phi) +
+                (2*cos_iota*cos_theta*sin_theta*sin_phi*sin_phi)/
+                 (pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                   sin_theta*sin_theta*sin_phi*sin_phi)))/(8.*M*M*M) +
+           ((1/sin_theta)*((3*mu*r*r*(3 - 4*(f) + f*f +
+                      2*log_f)*sin_theta*
+                    pow(-(cos_theta*cos_phi*sin_iota) - cos_iota*sin_theta,2))/(8.*M*M*M)\
+                  + (3*mu*r*r*cos_theta*
+                    (3 - 4*(f) + f*f + 2*log_f)*
+                    (-(cos_theta*cos_phi*sin_iota) - cos_iota*sin_theta)*
+                    (cos_iota*cos_theta - cos_phi*sin_iota*sin_theta))/(8.*M*M*M) +
+                 (3*mu*r*r*(3 - 4*(f) + f*f +
+                      2*log_f)*sin_theta*
+                    (cos_iota*cos_theta - cos_phi*sin_iota*sin_theta)*
+                    (-(cos_iota*cos_theta) + cos_phi*sin_iota*sin_theta))/(8.*M*M*M)) +
+              (f)*(r*r*
+                  ((-3*mu*((-8*M)/r*r + (4*M)/((f)*r*r) +
+                         (4*M*(f))/r*r)*r*
+                       (1 - pow(cos_iota*cos_theta - cos_phi*sin_iota*sin_theta,2)))/
+                     (4.*M*M*M) - (3*mu*
+                       ((8*M*M)/r*r*r*r -
+                         (8*M*M)/(f*f*r*r*r*r) +
+                         (16*M)/r*r*r - (8*M)/((f)*r*r*r) -
+                         (8*M*(f))/r*r*r)*r*r*
+                       (1 - pow(cos_iota*cos_theta - cos_phi*sin_iota*sin_theta,2)))/
+                     (16.*M*M*M) -
+                    (3*mu*(3 - 4*(f) + f*f + 2*log_f)*
+                       (1 - pow(cos_iota*cos_theta - cos_phi*sin_iota*sin_theta,2)))/
+                     (8.*M*M*M)) +
+                 2*r*((-3*mu*((-8*M)/r*r + (4*M)/((f)*r*r) +
+                         (4*M*(f))/r*r)*r*r*
+                       (1 - pow(cos_iota*cos_theta - cos_phi*sin_iota*sin_theta,2)))/
+                     (16.*M*M*M) -
+                    (3*mu*r*(3 - 4*(f) + f*f +
+                         2*log_f)*
+                       (1 - pow(cos_iota*cos_theta - cos_phi*sin_iota*sin_theta,2)))/
+                     (8.*M*M*M))))*
+            ((cos_phi*sin_theta*(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta))/
+               (pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                 sin_theta*sin_theta*sin_phi*sin_phi) +
+              (cos_iota*sin_theta*sin_theta*sin_phi*sin_phi)/
+               (pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                 sin_theta*sin_theta*sin_phi*sin_phi)) -
+           (3*mu*r*r*(3 - 4*(f) + f*f +
+                2*log_f)*sin_iota*(cos_iota*cos_theta - cos_phi*sin_iota*sin_theta)*
+              sin_phi*(sin_theta*(-((cos_theta*(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta)*sin_phi*
+                        (2*(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta)*
+                           (cos_iota*cos_theta*cos_phi - sin_iota*sin_theta) +
+                          2*cos_theta*sin_theta*sin_phi*sin_phi))/
+                      pow(pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                        sin_theta*sin_theta*sin_phi*sin_phi,2)) +
+                   (sin_theta*(cos_iota*cos_theta*cos_phi - sin_iota*sin_theta)*sin_phi*
+                      (2*(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta)*
+                         (cos_iota*cos_theta*cos_phi - sin_iota*sin_theta) +
+                        2*cos_theta*sin_theta*sin_phi*sin_phi))/
+                    pow(pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                      sin_theta*sin_theta*sin_phi*sin_phi,2) -
+                   (sin_theta*(-(cos_theta*sin_iota) - cos_iota*cos_phi*sin_theta)*sin_phi)/
+                    (pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                      sin_theta*sin_theta*sin_phi*sin_phi) -
+                   (sin_theta*(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta)*sin_phi)/
+                    (pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                      sin_theta*sin_theta*sin_phi*sin_phi)) +
+                cos_theta*((cos_theta*(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta)*sin_phi)/
+                    (pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                      sin_theta*sin_theta*sin_phi*sin_phi) -
+                   (sin_theta*(cos_iota*cos_theta*cos_phi - sin_iota*sin_theta)*sin_phi)/
+                    (pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                      sin_theta*sin_theta*sin_phi*sin_phi))))/(8.*M*M*M)))/(r*(-2*M + r));
+
+
+    // //outside the spacelike region, no 3-current is allowed
+    // if (alpha>alpha0){
+    //   Jr = 0.0; Jtheta = 0.0; Jphi = 0.0;
+    // }
+    // else{
+
+    Jr = (Lambda*(1/sin_theta)*((-3*mu*r*r*(3 - 4*(f) + f*f +
+                2*log_f)*sin_iota*sin_theta*
+              (cos_iota*cos_theta - cos_phi*sin_iota*sin_theta)*sin_phi*
+              ((cos_theta*(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta)*sin_phi)/
+                 (pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                   sin_theta*sin_theta*sin_phi*sin_phi) -
+                (sin_theta*(cos_iota*cos_theta*cos_phi - sin_iota*sin_theta)*sin_phi)/
+                 (pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                   sin_theta*sin_theta*sin_phi*sin_phi)))/(8.*M*M*M) +
+           (3*mu*r*r*(3 - 4*(f) + f*f +
+                2*log_f)*(-(cos_theta*cos_phi*sin_iota) - cos_iota*sin_theta)*
+              (cos_iota*cos_theta - cos_phi*sin_iota*sin_theta)*
+              ((cos_phi*sin_theta*(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta))/
+                 (pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                   sin_theta*sin_theta*sin_phi*sin_phi) +
+                (cos_iota*sin_theta*sin_theta*sin_phi*sin_phi)/
+                 (pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                   sin_theta*sin_theta*sin_phi*sin_phi)))/(8.*M*M*M)))/
+       (r*sqrt(r*(-2*M + r)));
+
+
+    Jtheta = -((Lambda*(1/sin_theta)*((-3*mu*((-8*M)/r*r + (4*M)/((f)*r*r) +
+                  (4*M*(f))/r*r)*r*r*
+                (1 - pow(cos_iota*cos_theta - cos_phi*sin_iota*sin_theta,2)))/(16.*M*M*M)\
+              - (3*mu*r*(3 - 4*(f) + f*f + 2*log_f)*
+                (1 - pow(cos_iota*cos_theta - cos_phi*sin_iota*sin_theta,2)))/(8.*M*M*M))*
+           ((cos_phi*sin_theta*(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta))/
+              (pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                sin_theta*sin_theta*sin_phi*sin_phi) +
+             (cos_iota*sin_theta*sin_theta*sin_phi*sin_phi)/
+              (pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+                sin_theta*sin_theta*sin_phi*sin_phi)))/r);
+
+
+    Jphi = (Lambda*((-3*mu*((-8*M)/r*r + (4*M)/((f)*r*r) +
+                (4*M*(f))/r*r)*r*r*
+              (1 - pow(cos_iota*cos_theta - cos_phi*sin_iota*sin_theta,2)))/(16.*M*M*M) -
+           (3*mu*r*(3 - 4*(f) + f*f + 2*log_f)*
+              (1 - pow(cos_iota*cos_theta - cos_phi*sin_iota*sin_theta,2)))/(8.*M*M*M))*
+         ((cos_theta*(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta)*sin_phi)/
+            (pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+              sin_theta*sin_theta*sin_phi*sin_phi) -
+           (sin_theta*(cos_iota*cos_theta*cos_phi - sin_iota*sin_theta)*sin_phi)/
+            (pow(cos_theta*sin_iota + cos_iota*cos_phi*sin_theta,2) +
+              sin_theta*sin_theta*sin_phi*sin_phi)))/r;
