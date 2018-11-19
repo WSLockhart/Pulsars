@@ -6,4 +6,4 @@ Compactness C=M/R. The shape of the light-curves appears to be sensitive to M an
 
 [video link](/Videos/run13.mp4)
 
-\alpha
+$latex \alpha $
