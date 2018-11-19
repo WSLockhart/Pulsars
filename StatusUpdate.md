@@ -6,4 +6,4 @@ Compactness C=M/R. The shape of the light-curves appears to be sensitive to M an
 
 [video link](/Videos/run13.mp4)
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;I(\epsilon)&space;=&space;\frac{\epsilon^3}{\rm{e}^{(\epsilon/T)}-1}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;I(\epsilon)&space;=&space;\frac{\epsilon^3}{\rm{e}^{(\epsilon/T)}-1}" title="I(\epsilon) = \frac{\epsilon^3}{\rm{e}^{(\epsilon/T)}-1}" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=I(\epsilon)&space;=&space;\frac{\epsilon^3}{\rm{e}^{(\epsilon/T)}-1}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?I(\epsilon)&space;=&space;\frac{\epsilon^3}{\rm{e}^{(\epsilon/T)}-1}" title="I(\epsilon) = \frac{\epsilon^3}{\rm{e}^{(\epsilon/T)}-1}" /></a>
