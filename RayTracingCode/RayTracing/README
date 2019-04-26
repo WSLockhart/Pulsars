@@ -1,0 +1,127 @@
+=====================================================================
+             RAY TRACING AROUND A FAST SPINNING NEUTRON STAR
+                      May 2018, Dimitrios Psaltis
+=====================================================================
+
+1. DESCRIPTION
+
+This program calculates the trajectories of photons in a quasi-Kerr
+spacetime, the resulting intensity distribution on the image plane,
+as well as the energy-dependent flux as seen by an observer at
+infinity.
+
+In principle, the metric is that of Glampedakis & Babak (2006, Class
+Quant Grav 23, 4167). It is completely specified by the spin of the
+compact object "a" and the deviation "epsilon" of the quadrupole
+moment of the spacetime from its Kerr value. When epsilon<>0, the
+metric is well behaved only at radii>2.6M.
+
+For this version of the algorithm, the Schwarzschild metric has been
+hardwired, so the spin and the quadrupole deviation are not used.
+
+The emission of photons is assumed to originate from the surface of the
+neutron star with a black-body spectrum of temperature given in keV.
+
+2. COMPILATION AND EXECUTION
+
+The algorithm is written in C, and has be debugged on a Mac running OS X
+v10.6.2. It has been compiled using the gcc compiler v4.0.
+
+In order to compile it type the command
+   make
+in the directory where the source code resides.
+
+The parameters of the calculation are expected in a file named "in"
+in the current directory. The file must have the following set 
+of parameters (in the same order):
+   a_bh   : [NOT USED] dimensionless spin of compact object (0<=a<1)
+   epsilon: [NOT USED] dimensionless deviation of the
+            black-hole quadrupole from the Kerr value q=-(a^2+epsilon)
+   Req    : circumferential radius of neutron star in km
+   Mns    : mass of neutron star in solar masses
+   fns    : neutron star spin frequency (as in 1/Period) in Hz
+   theta0 : inclination of the observer (in degrees) with respect
+            to the spin axis of the neutron star
+   the_spot: latitude of spot (or magnetic axis) on the surface of the star
+             measured in degrees
+   rho0   : angular half-opening angle (in degrees) of the spot on the stellar
+            surface
+   Tbb    : temperature of the blackbody (or temperature scale) in keV
+
+Note: The code, as it is written at this point, does not handle well
+extremely small inclinations, at which the pole of the coordinate system
+intersects the image plane.
+
+In order to execute the code type the command
+   ./ray > output.dat
+in the directory where the code resides.
+
+3. CODE OUTPUT
+
+As it stands now, upon completion, the output contains three columns:
+First column: rotation phase (in fraction of period)
+Second Column: photon energy (in keV)
+Third Column: photon flux at infinity, in photons/cm^2/s/keV
+This output will allow you to plot photon spectra at different rotational
+phases or light-curves at different photon energies.
+
+In order to plot an image and not a light-curve:
+- go to file 'time.c'
+- go to subroutine:
+     void time_spectrum(double Energy[], double Time[])
+- towards the end, comment out the line 
+     printf("%e %e %e\n",Time[time_index-1]*Omegans/2./M_PI,Energy[energy_index-1],flux);
+  which generates the above output
+- go a few lines above it and remove the comment from the line
+     //printf("%e %e %e\n",X_h,Y_h,Intensity);
+- compile and run the program again (best with only one time bin)
+
+The output now will have again three columns:
+First column: horizontal location of pixel (in M)
+Second column: vertical location of pixel (in M)
+Third column: Intensity of radiation at that pixel.
+
+4. CODE PARAMETERS
+
+There are a number of parameters that can be altered and reside in the
+file 'definitions.h'
+
+The most useful ones are:
+
+#define Nx 385   // # of grid points along the x-axis on the image plane
+#define Ny 385  // # of grid points along the y-axis on the image plane
+                // NB!!!: Nx and Ny have to be odd integers
+
+They control the number of grid points in the coarse grid. For a large
+spot, they can be relatively small, e.g., 64, which increases the
+speed considerably. One needs to ensure that the result has converged,
+though.
+
+#define Nx_h 512 // # of grid points along the x-axis on the image plane
+#define Ny_h 512 // # of grid points along the y-axis on the image plane
+
+These control the number of grid points in the fine grid. They
+determine the accuracy of the result.
+
+#define Xmax 18 // Size of calculated image along the x-axis in M
+#define Ymax 18 // Size of calculated image along the y-axis in M
+
+Make sure that the size of the image is large enough to fit the
+neutron star.
+
+#define Nen 128         // number of energy grid points for spectra
+#define Emin 0.1        // minimum photon Energy for grid
+#define Emax 2.0        // maximum photon Energy for grid
+
+These define the grid of photon energies on which the flux will be
+calculated.  For a smooth, e.g., blackbody spectrum, a small number,
+e.g., 32, will be enough and will speed up the calculation
+considerably.
+
+#define Nt 32              // number of time grid points
+#define Time_max 1        // maximum number of spin periods to be used
+
+These define the grid and length of time (in units of the neutron-star
+period) over which the flux will be calculated. For a smooth profile,
+a small number, e.g., 32, should be adequate.
+
