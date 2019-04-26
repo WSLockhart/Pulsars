@@ -1,0 +1,657 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     23808,        649]
+NotebookOptionsPosition[     23053,        618]
+NotebookOutlinePosition[     23410,        634]
+CellTagsIndexPosition[     23367,        631]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ StyleBox[
+  RowBox[{"Converting", " ", "Formulae", " ", "to", " ", "C"}], 
+  "Section"]], "Input",
+ CellChangeTimes->{{3.745851652388587*^9, 3.745851659238553*^9}},
+ FontSize->16],
+
+Cell[BoxData[{
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"rotate\[Theta]", "[", "inc_", "]"}], ":=", 
+    RowBox[{"ArcCos", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Cos", "[", "\[Theta]", "]"}], 
+       RowBox[{"Cos", "[", "inc", "]"}]}], "-", 
+      RowBox[{
+       RowBox[{"Sin", "[", "\[Theta]", "]"}], 
+       RowBox[{"Cos", "[", "\[Phi]", "]"}], 
+       RowBox[{"Sin", "[", "inc", "]"}]}]}], "]"}]}], ";"}],
+  FontSize->16], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"rotate\[Phi]", "[", "inc_", "]"}], ":=", " ", 
+     RowBox[{"ArcTan", "[", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Sin", "[", "\[Theta]", "]"}], 
+          RowBox[{"Cos", "[", "\[Phi]", "]"}], 
+          RowBox[{"Cos", "[", "inc", "]"}]}], "+", 
+         RowBox[{
+          RowBox[{"Cos", "[", "\[Theta]", "]"}], 
+          RowBox[{"Sin", "[", "inc", "]"}]}]}], ")"}], ",", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Sin", "[", "\[Theta]", "]"}], 
+         RowBox[{"Sin", "[", "\[Phi]", "]"}]}], ")"}]}], "]"}]}], ";"}], 
+   "   "}],
+  FontSize->16], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"\[Theta]prime", " ", "=", " ", 
+    RowBox[{"rotate\[Theta]", "[", "iota", "]"}]}], ";"}],
+  FontSize->16], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"\[Phi]prime", "=", 
+    RowBox[{"rotate\[Phi]", "[", "iota", "]"}]}], ";"}],
+  FontSize->16], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", " ", "=", " ", 
+     RowBox[{"1", "-", 
+      FractionBox[
+       RowBox[{"2", "M"}], "r"]}]}], ";"}], " "}],
+  FontSize->16], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"\[Alpha]", "=", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"-", "3"}], "2"], 
+      RowBox[{"(", 
+       FractionBox[
+        RowBox[{"3", "+", 
+         RowBox[{"2", 
+          RowBox[{"Log", "[", "f", "]"}]}], "-", 
+         RowBox[{"4", "f"}], "+", 
+         SuperscriptBox["f", "2"]}], 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"1", "-", "f"}], ")"}], "3"]], ")"}], 
+      FractionBox["mu", "r"], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"Sin", "[", "\[Theta]prime", "]"}], ")"}], "2"]}]}], ";"}], 
+   " "}],
+  FontSize->16], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"\[Beta]", "=", " ", "\[Phi]prime"}], ";"}], "  "}],
+  FontSize->16], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"\[Alpha]0", "=", 
+     RowBox[{
+      SqrtBox[
+       FractionBox["3", "2"]], "mu", "*", "Omega", 
+      RowBox[{"(", 
+       RowBox[{"1", "+", 
+        RowBox[{
+         FractionBox["1", "5"], 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"Sin", "[", "iota", "]"}], ")"}], "2"]}]}], ")"}]}]}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    StyleBox[
+     RowBox[{"(", "*"}]], " ", 
+    RowBox[{
+     RowBox[{
+     "We", " ", "have", " ", "simplified", " ", "the", " ", "formulae", " ", 
+      "for", " ", "J", " ", "by", " ", "eliminating", " ", "terms", " ", 
+      "with", " ", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", "r"], "\[Beta]"}], " ", "which", " ", 
+      "are", " ", "zero"}], ",", " ", 
+     RowBox[{"and", " ", "putting", " ", 
+      RowBox[{"in", " ", "'"}], 
+      RowBox[{"f", "'"}], " ", "in", " ", "place", " ", "of", " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        FractionBox[
+         RowBox[{"2", "M"}], "r"]}], ")"}]}]}], " ", 
+    StyleBox[
+     RowBox[{"*", ")"}]]}], "\[IndentingNewLine]"}],
+  FontSize->16], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"Jt", "=", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       SqrtBox["f"], ")"}], " ", 
+      FractionBox[
+       RowBox[{"Omega", "-", "OmegaZ"}], 
+       RowBox[{
+        SuperscriptBox["r", "2"], "f"}]], 
+      RowBox[{"(", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          SubscriptBox["\[PartialD]", "\[Theta]"], "\[Alpha]"}], " ", 
+         RowBox[{
+          SubscriptBox["\[PartialD]", "\[Theta]"], 
+          RowBox[{
+           SubscriptBox["\[PartialD]", "\[Phi]"], "\[Beta]"}]}]}], " ", "-", 
+        " ", 
+        RowBox[{
+         RowBox[{
+          SubscriptBox["\[PartialD]", "\[Theta]"], "\[Beta]"}], " ", 
+         RowBox[{
+          SubscriptBox["\[PartialD]", "\[Theta]"], 
+          RowBox[{
+           SubscriptBox["\[PartialD]", "\[Phi]"], "\[Alpha]"}]}]}], " ", "-", 
+        " ", 
+        RowBox[{
+         RowBox[{
+          SubscriptBox["\[PartialD]", "\[Phi]"], "\[Alpha]"}], 
+         RowBox[{"(", 
+          FractionBox[
+           RowBox[{
+            SubscriptBox["\[PartialD]", "\[Theta]"], 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"Sin", "[", "\[Theta]", "]"}], 
+              RowBox[{
+               SubscriptBox["\[PartialD]", "\[Theta]"], "\[Beta]"}]}], 
+             ")"}]}], 
+           RowBox[{"Sin", "[", "\[Theta]", "]"}]], ")"}]}], " ", "+", " ", 
+        RowBox[{
+         RowBox[{
+          SubscriptBox["\[PartialD]", "\[Phi]"], "\[Beta]"}], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"f", 
+            RowBox[{
+             SubscriptBox["\[PartialD]", "r"], 
+             RowBox[{"(", 
+              RowBox[{
+               SuperscriptBox["r", "2"], 
+               RowBox[{
+                SubscriptBox["\[PartialD]", "r"], "\[Alpha]"}]}], ")"}]}]}], 
+           "+", 
+           FractionBox[
+            RowBox[{
+             SubscriptBox["\[PartialD]", "\[Theta]"], 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"Sin", "[", "\[Theta]", "]"}], 
+               RowBox[{
+                SubscriptBox["\[PartialD]", "\[Theta]"], "\[Alpha]"}]}], 
+              ")"}]}], 
+            RowBox[{"Sin", "[", "\[Theta]", "]"}]]}], ")"}]}]}], ")"}]}]}], 
+    ";"}], " "}],
+  FontSize->16], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"Jr", "=", " ", 
+    RowBox[{
+     FractionBox["Lambda", 
+      RowBox[{
+       SqrtBox[
+        RowBox[{
+         SuperscriptBox["r", "2"], "f"}]], 
+       RowBox[{"(", 
+        RowBox[{"r", "*", 
+         RowBox[{"Sin", "[", "\[Theta]", "]"}]}], ")"}]}]], 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         SubscriptBox["\[PartialD]", "\[Theta]"], "\[Alpha]"}], " ", 
+        RowBox[{
+         SubscriptBox["\[PartialD]", "\[Phi]"], "\[Beta]"}]}], " ", "-", " ", 
+       
+       RowBox[{
+        RowBox[{
+         SubscriptBox["\[PartialD]", "\[Theta]"], "\[Beta]"}], " ", 
+        RowBox[{
+         SubscriptBox["\[PartialD]", "\[Phi]"], "\[Alpha]"}]}]}], ")"}]}]}], 
+   ";"}],
+  FontSize->16], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"J\[Theta]", "=", " ", 
+    RowBox[{
+     FractionBox["Lambda", 
+      RowBox[{"r", "*", 
+       RowBox[{"Sin", "[", "\[Theta]", "]"}]}]], 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{
+         SubscriptBox["\[PartialD]", "r"], "\[Alpha]"}]}], " ", 
+       RowBox[{
+        SubscriptBox["\[PartialD]", "\[Phi]"], "\[Beta]"}]}], ")"}]}]}], ";"}],
+  FontSize->16], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"J\[Phi]", "=", " ", 
+    RowBox[{
+     FractionBox["Lambda", "r"], 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        SubscriptBox["\[PartialD]", "r"], "\[Alpha]"}], " ", 
+       RowBox[{
+        SubscriptBox["\[PartialD]", "\[Theta]"], "\[Beta]"}]}], ")"}]}]}], 
+   ";"}],
+  FontSize->16]}], "Input",
+ CellChangeTimes->{{3.745851627848338*^9, 3.7458516750619593`*^9}, {
+  3.745851776481738*^9, 3.745851806735284*^9}, {3.745851893778715*^9, 
+  3.745851894450686*^9}, {3.745851939929804*^9, 3.745851949255583*^9}, {
+  3.745851985072307*^9, 3.745852034173483*^9}, {3.745852080010199*^9, 
+  3.745852164332244*^9}, {3.745853280275326*^9, 3.7458533393889313`*^9}, {
+  3.7458546490723867`*^9, 3.745854655709304*^9}, {3.745854762822074*^9, 
+  3.745854775735469*^9}, {3.745855082045681*^9, 3.745855084118084*^9}},
+ FontSize->16],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"CForm", "[", "Jt", "]"}], "/.", 
+   RowBox[{
+    StyleBox["{",
+     FontSize->16], 
+    RowBox[{
+     StyleBox[
+      RowBox[{
+       StyleBox["\[Theta]",
+        FontSize->16], 
+       StyleBox["\[Rule]",
+        FontSize->16], "theta"}],
+      FontSize->16], 
+     StyleBox[",",
+      FontSize->16], 
+     StyleBox[" ",
+      FontSize->16], 
+     RowBox[{
+      StyleBox["\[Phi]",
+       FontSize->16], 
+      StyleBox["\[Rule]",
+       FontSize->16], "phi"}], ",", " ", 
+     RowBox[{"Sin", "\[Rule]", "sin"}], ",", 
+     RowBox[{"Cos", "\[Rule]", "cos"}], ",", 
+     RowBox[{"Log", "\[Rule]", "log"}], ",", 
+     RowBox[{"Power", "\[Rule]", "pow"}], ",", 
+     RowBox[{"Sqrt", "\[Rule]", "sqrt"}]}], "}"}], " "}]}]], "Input",
+ CellChangeTimes->{{3.745853375257844*^9, 3.745853490699149*^9}, {
+  3.74585355500786*^9, 3.745853617412924*^9}, {3.745853657235075*^9, 
+  3.745853666602059*^9}, {3.7458537084023333`*^9, 3.745853738989797*^9}},
+ FontSize->12],
+
+Cell["\<\
+(Omega - OmegaZ)*pow(r,-2)*pow(1 - 2*M*pow(r,-1),-0.5)*(-((cos(theta)*
+           pow(pow(sin(phi),2)*pow(sin(theta),2) + pow(cos(theta)*sin(iota) + \
+cos(iota)*cos(phi)*sin(theta),2),-1)*sin(phi)*
+           (cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta)) - 
+          pow(pow(sin(phi),2)*pow(sin(theta),2) + pow(cos(theta)*sin(iota) + \
+cos(iota)*cos(phi)*sin(theta),2),-1)*sin(phi)*sin(theta)*
+           (cos(iota)*cos(phi)*cos(theta) - sin(iota)*sin(theta)))*
+        ((3*mu*pow(M,-3)*pow(r,2)*(3 + 2*log(1 - 2*M*pow(r,-1)) - 4*(1 - \
+2*M*pow(r,-1)) + pow(1 - 2*M*pow(r,-1),2))*sin(iota)*sin(phi)*
+             sin(theta)*(-(cos(phi)*cos(theta)*sin(iota)) - \
+cos(iota)*sin(theta)))/8. + 
+          (3*mu*cos(theta)*pow(M,-3)*pow(r,2)*(3 + 2*log(1 - 2*M*pow(r,-1)) - \
+4*(1 - 2*M*pow(r,-1)) + pow(1 - 2*M*pow(r,-1),2))*sin(iota)*
+             sin(phi)*(cos(iota)*cos(theta) - \
+cos(phi)*sin(iota)*sin(theta)))/8.)) + 
+     (3*mu*pow(M,-3)*pow(r,2)*(3 + 2*log(1 - 2*M*pow(r,-1)) - 4*(1 - \
+2*M*pow(r,-1)) + pow(1 - 2*M*pow(r,-1),2))*
+        (-(cos(phi)*cos(theta)*sin(iota)) - \
+cos(iota)*sin(theta))*(cos(iota)*cos(theta) - cos(phi)*sin(iota)*sin(theta))*
+        (2*cos(iota)*cos(theta)*pow(pow(sin(phi),2)*pow(sin(theta),2) + \
+pow(cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta),2),-1)*
+           pow(sin(phi),2)*sin(theta) + cos(phi)*cos(theta)*
+           pow(pow(sin(phi),2)*pow(sin(theta),2) + pow(cos(theta)*sin(iota) + \
+cos(iota)*cos(phi)*sin(theta),2),-1)*
+           (cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta)) + 
+          cos(phi)*pow(pow(sin(phi),2)*pow(sin(theta),2) + \
+pow(cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta),2),-1)*sin(theta)*
+           (cos(iota)*cos(phi)*cos(theta) - sin(iota)*sin(theta)) - 
+          cos(iota)*pow(pow(sin(phi),2)*pow(sin(theta),2) + \
+pow(cos(theta)*sin(iota) + \
+cos(iota)*cos(phi)*sin(theta),2),-2)*pow(sin(phi),2)*
+           pow(sin(theta),2)*(2*cos(theta)*pow(sin(phi),2)*sin(theta) + 
+             2*(cos(theta)*sin(iota) + \
+cos(iota)*cos(phi)*sin(theta))*(cos(iota)*cos(phi)*cos(theta) - \
+sin(iota)*sin(theta))) - 
+          cos(phi)*pow(pow(sin(phi),2)*pow(sin(theta),2) + \
+pow(cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta),2),-2)*sin(theta)*
+           (cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta))*
+           (2*cos(theta)*pow(sin(phi),2)*sin(theta) + 2*(cos(theta)*sin(iota) \
++ cos(iota)*cos(phi)*sin(theta))*
+              (cos(iota)*cos(phi)*cos(theta) - sin(iota)*sin(theta)))))/8. + 
+     (cos(iota)*pow(pow(sin(phi),2)*pow(sin(theta),2) + \
+pow(cos(theta)*sin(iota) + \
+cos(iota)*cos(phi)*sin(theta),2),-1)*pow(sin(phi),2)*
+         pow(sin(theta),2) + cos(phi)*pow(pow(sin(phi),2)*pow(sin(theta),2) + \
+pow(cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta),2),-1)*
+         sin(theta)*(cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta)))*
+      ((1 - 2*M*pow(r,-1))*(pow(r,2)*((-3*mu*pow(M,-3)*pow(r,2)*
+                 (8*pow(M,2)*pow(r,-4) + 16*M*pow(r,-3) - 8*M*pow(r,-3)*(1 - \
+2*M*pow(r,-1)) - 
+                   8*pow(M,2)*pow(r,-4)*pow(1 - 2*M*pow(r,-1),-2) - \
+8*M*pow(r,-3)*pow(1 - 2*M*pow(r,-1),-1))*
+                 (1 - pow(cos(iota)*cos(theta) - \
+cos(phi)*sin(iota)*sin(theta),2)))/16. - 
+              (3*mu*r*pow(M,-3)*(-8*M*pow(r,-2) + 4*M*pow(r,-2)*(1 - \
+2*M*pow(r,-1)) + 4*M*pow(r,-2)*pow(1 - 2*M*pow(r,-1),-1))*
+                 (1 - pow(cos(iota)*cos(theta) - \
+cos(phi)*sin(iota)*sin(theta),2)))/4. - 
+              (3*mu*pow(M,-3)*(3 + 2*log(1 - 2*M*pow(r,-1)) - 4*(1 - \
+2*M*pow(r,-1)) + pow(1 - 2*M*pow(r,-1),2))*
+                 (1 - pow(cos(iota)*cos(theta) - \
+cos(phi)*sin(iota)*sin(theta),2)))/8.) + 
+           2*r*((-3*mu*pow(M,-3)*pow(r,2)*(-8*M*pow(r,-2) + 4*M*pow(r,-2)*(1 \
+- 2*M*pow(r,-1)) + 4*M*pow(r,-2)*pow(1 - 2*M*pow(r,-1),-1))*
+                 (1 - pow(cos(iota)*cos(theta) - \
+cos(phi)*sin(iota)*sin(theta),2)))/16. - 
+              (3*mu*r*pow(M,-3)*(3 + 2*log(1 - 2*M*pow(r,-1)) - 4*(1 - \
+2*M*pow(r,-1)) + pow(1 - 2*M*pow(r,-1),2))*
+                 (1 - pow(cos(iota)*cos(theta) - \
+cos(phi)*sin(iota)*sin(theta),2)))/8.)) + 
+        Csc(theta)*((3*mu*pow(M,-3)*pow(r,2)*(3 + 2*log(1 - 2*M*pow(r,-1)) - \
+4*(1 - 2*M*pow(r,-1)) + pow(1 - 2*M*pow(r,-1),2))*
+              pow(-(cos(phi)*cos(theta)*sin(iota)) - \
+cos(iota)*sin(theta),2)*sin(theta))/8. + 
+           (3*mu*cos(theta)*pow(M,-3)*pow(r,2)*(3 + 2*log(1 - 2*M*pow(r,-1)) \
+- 4*(1 - 2*M*pow(r,-1)) + pow(1 - 2*M*pow(r,-1),2))*
+              (-(cos(phi)*cos(theta)*sin(iota)) - \
+cos(iota)*sin(theta))*(cos(iota)*cos(theta) - \
+cos(phi)*sin(iota)*sin(theta)))/8. + 
+           (3*mu*pow(M,-3)*pow(r,2)*(3 + 2*log(1 - 2*M*pow(r,-1)) - 4*(1 - \
+2*M*pow(r,-1)) + pow(1 - 2*M*pow(r,-1),2))*sin(theta)*
+              (cos(iota)*cos(theta) - \
+cos(phi)*sin(iota)*sin(theta))*(-(cos(iota)*cos(theta)) + \
+cos(phi)*sin(iota)*sin(theta)))/8.)) - 
+     (3*mu*pow(M,-3)*pow(r,2)*(3 + 2*log(1 - 2*M*pow(r,-1)) - 4*(1 - \
+2*M*pow(r,-1)) + pow(1 - 2*M*pow(r,-1),2))*sin(iota)*sin(phi)*
+        (cos(iota)*cos(theta) - cos(phi)*sin(iota)*sin(theta))*
+        (cos(theta)*(cos(theta)*pow(pow(sin(phi),2)*pow(sin(theta),2) + \
+pow(cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta),2),-1)*
+              sin(phi)*(cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta)) \
+- 
+             pow(pow(sin(phi),2)*pow(sin(theta),2) + pow(cos(theta)*sin(iota) \
++ cos(iota)*cos(phi)*sin(theta),2),-1)*sin(phi)*sin(theta)*
+              (cos(iota)*cos(phi)*cos(theta) - sin(iota)*sin(theta))) + 
+          sin(theta)*(-(pow(pow(sin(phi),2)*pow(sin(theta),2) + \
+pow(cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta),2),-1)*sin(phi)*
+                sin(theta)*(-(cos(theta)*sin(iota)) - \
+cos(iota)*cos(phi)*sin(theta))) - 
+             pow(pow(sin(phi),2)*pow(sin(theta),2) + pow(cos(theta)*sin(iota) \
++ cos(iota)*cos(phi)*sin(theta),2),-1)*sin(phi)*sin(theta)*
+              (cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta)) - 
+             cos(theta)*pow(pow(sin(phi),2)*pow(sin(theta),2) + \
+pow(cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta),2),-2)*sin(phi)*
+              (cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta))*
+              (2*cos(theta)*pow(sin(phi),2)*sin(theta) + 
+                2*(cos(theta)*sin(iota) + \
+cos(iota)*cos(phi)*sin(theta))*(cos(iota)*cos(phi)*cos(theta) - \
+sin(iota)*sin(theta))) + 
+             pow(pow(sin(phi),2)*pow(sin(theta),2) + pow(cos(theta)*sin(iota) \
++ cos(iota)*cos(phi)*sin(theta),2),-2)*sin(phi)*sin(theta)*
+              (cos(iota)*cos(phi)*cos(theta) - sin(iota)*sin(theta))*
+              (2*cos(theta)*pow(sin(phi),2)*sin(theta) + 
+                2*(cos(theta)*sin(iota) + \
+cos(iota)*cos(phi)*sin(theta))*(cos(iota)*cos(phi)*cos(theta) - \
+sin(iota)*sin(theta))))))/8.)\
+\>", "Output",
+ CellChangeTimes->{
+  3.745853500053584*^9, {3.745853576283615*^9, 3.745853618914652*^9}, 
+   3.745853667407413*^9, {3.745853709442626*^9, 3.745853739523943*^9}, 
+   3.7458546061544743`*^9, 3.745854661968567*^9, 3.745854778087843*^9, 
+   3.745855089277141*^9},
+ FontSize->12]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"CForm", "[", "Jr", "]"}],
+   FontSize->16], 
+  StyleBox[
+   StyleBox[
+    RowBox[{"/", "."}]],
+   FontSize->16], 
+  RowBox[{
+   StyleBox["{",
+    FontSize->16], 
+   RowBox[{
+    StyleBox[
+     RowBox[{
+      StyleBox["\[Theta]",
+       FontSize->16], 
+      StyleBox["\[Rule]",
+       FontSize->16], "theta"}],
+     FontSize->16], 
+    StyleBox[",",
+     FontSize->16], 
+    StyleBox[" ",
+     FontSize->16], 
+    RowBox[{
+     StyleBox["\[Phi]",
+      FontSize->16], 
+     StyleBox["\[Rule]",
+      FontSize->16], "phi"}], ",", " ", 
+    RowBox[{"Sin", "\[Rule]", "sin"}], ",", 
+    RowBox[{"Cos", "\[Rule]", "cos"}], ",", 
+    RowBox[{"Log", "\[Rule]", "log"}], ",", 
+    RowBox[{"Power", "\[Rule]", "pow"}], ",", 
+    RowBox[{"Sqrt", "\[Rule]", "sqrt"}]}], "}"}], " "}]], "Input",
+ CellChangeTimes->{{3.745853747533597*^9, 3.745853748781522*^9}, {
+  3.745855188393508*^9, 3.7458551906060038`*^9}},
+ FontSize->12],
+
+Cell["\<\
+Lambda*Csc(theta)*pow(r,-1)*pow((1 - 2*M*pow(r,-1))*pow(r,2),-0.5)*
+   ((3*mu*pow(M,-3)*pow(r,2)*(3 + 2*log(1 - 2*M*pow(r,-1)) - 4*(1 - \
+2*M*pow(r,-1)) + pow(1 - 2*M*pow(r,-1),2))*
+        (-(cos(phi)*cos(theta)*sin(iota)) - \
+cos(iota)*sin(theta))*(cos(iota)*cos(theta) - cos(phi)*sin(iota)*sin(theta))*
+        (cos(iota)*pow(pow(sin(phi),2)*pow(sin(theta),2) + \
+pow(cos(theta)*sin(iota) + \
+cos(iota)*cos(phi)*sin(theta),2),-1)*pow(sin(phi),2)*
+           pow(sin(theta),2) + cos(phi)*pow(pow(sin(phi),2)*pow(sin(theta),2) \
++ pow(cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta),2),
+            -1)*sin(theta)*(cos(theta)*sin(iota) + \
+cos(iota)*cos(phi)*sin(theta))))/8. - 
+     (3*mu*pow(M,-3)*pow(r,2)*(3 + 2*log(1 - 2*M*pow(r,-1)) - 4*(1 - \
+2*M*pow(r,-1)) + pow(1 - 2*M*pow(r,-1),2))*sin(iota)*sin(phi)*sin(theta)*
+        (cos(iota)*cos(theta) - cos(phi)*sin(iota)*sin(theta))*
+        (cos(theta)*pow(pow(sin(phi),2)*pow(sin(theta),2) + \
+pow(cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta),2),-1)*sin(phi)*
+           (cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta)) - 
+          pow(pow(sin(phi),2)*pow(sin(theta),2) + pow(cos(theta)*sin(iota) + \
+cos(iota)*cos(phi)*sin(theta),2),-1)*sin(phi)*sin(theta)*
+           (cos(iota)*cos(phi)*cos(theta) - sin(iota)*sin(theta))))/8.)\
+\>", "Output",
+ CellChangeTimes->{3.74585375002094*^9, 3.7458546156501617`*^9, 
+  3.745854780584919*^9, 3.745855093013143*^9},
+ FontSize->12]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"CForm", "[", "J\[Theta]", "]"}],
+   FontSize->16], 
+  StyleBox[
+   StyleBox[
+    RowBox[{"/", "."}]],
+   FontSize->16], 
+  RowBox[{
+   StyleBox["{",
+    FontSize->16], 
+   RowBox[{
+    StyleBox[
+     RowBox[{"\[Theta]", "\[Rule]", "theta"}],
+     FontSize->16], 
+    StyleBox[",",
+     FontSize->16], 
+    StyleBox[" ",
+     FontSize->16], 
+    RowBox[{
+     StyleBox["\[Phi]",
+      FontSize->16], 
+     StyleBox["\[Rule]",
+      FontSize->16], "phi"}], ",", " ", 
+    RowBox[{"Sin", "\[Rule]", "sin"}], ",", 
+    RowBox[{"Cos", "\[Rule]", "cos"}], ",", 
+    RowBox[{"Log", "\[Rule]", "log"}], ",", 
+    RowBox[{"Power", "\[Rule]", "pow"}], ",", 
+    RowBox[{"Sqrt", "\[Rule]", "sqrt"}]}], "}"}], " "}]], "Input",
+ CellChangeTimes->{{3.7458537541669416`*^9, 3.745853763349593*^9}},
+ FontSize->12],
+
+Cell["\<\
+Lambda*Csc(theta)*pow(r,-1)*((3*mu*pow(M,-3)*pow(r,2)*(-8*M*pow(r,-2) + \
+4*M*pow(r,-2)*(1 - 2*M*pow(r,-1)) + 
+          4*M*pow(r,-2)*pow(1 - 2*M*pow(r,-1),-1))*(1 - \
+pow(cos(iota)*cos(theta) - cos(phi)*sin(iota)*sin(theta),2)))/16. + 
+     (3*mu*r*pow(M,-3)*(3 + 2*log(1 - 2*M*pow(r,-1)) - 4*(1 - 2*M*pow(r,-1)) \
++ pow(1 - 2*M*pow(r,-1),2))*
+        (1 - pow(cos(iota)*cos(theta) - cos(phi)*sin(iota)*sin(theta),2)))/8.)*
+   (cos(iota)*pow(pow(sin(phi),2)*pow(sin(theta),2) + \
+pow(cos(theta)*sin(iota) + \
+cos(iota)*cos(phi)*sin(theta),2),-1)*pow(sin(phi),2)*
+      pow(sin(theta),2) + cos(phi)*pow(pow(sin(phi),2)*pow(sin(theta),2) + \
+pow(cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta),2),-1)*
+      sin(theta)*(cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta)))\
+\>", "Output",
+ CellChangeTimes->{3.745853764818712*^9, 3.745854618838181*^9, 
+  3.7458547839588747`*^9, 3.745855096111897*^9},
+ FontSize->12]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"CForm", "[", "J\[Phi]", "]"}],
+   FontSize->16], 
+  StyleBox[
+   StyleBox[
+    RowBox[{"/", "."}]],
+   FontSize->16], 
+  RowBox[{
+   StyleBox["{",
+    FontSize->16], 
+   RowBox[{
+    StyleBox[
+     RowBox[{"\[Theta]", "\[Rule]", "theta"}],
+     FontSize->16], 
+    StyleBox[",",
+     FontSize->16], 
+    StyleBox[" ",
+     FontSize->16], 
+    RowBox[{
+     StyleBox["\[Phi]",
+      FontSize->16], 
+     StyleBox["\[Rule]",
+      FontSize->16], "phi"}], ",", " ", 
+    RowBox[{"Sin", "\[Rule]", "sin"}], ",", 
+    RowBox[{"Cos", "\[Rule]", "cos"}], ",", 
+    RowBox[{"Log", "\[Rule]", "log"}], ",", 
+    RowBox[{"Power", "\[Rule]", "pow"}], ",", 
+    RowBox[{"Sqrt", "\[Rule]", "sqrt"}]}], "}"}], " "}]], "Input",
+ CellChangeTimes->{{3.745853768932601*^9, 3.745853770405015*^9}},
+ FontSize->12],
+
+Cell["\<\
+Lambda*pow(r,-1)*((-3*mu*pow(M,-3)*pow(r,2)*(-8*M*pow(r,-2) + \
+4*M*pow(r,-2)*(1 - 2*M*pow(r,-1)) + 4*M*pow(r,-2)*pow(1 - 2*M*pow(r,-1),-1))*
+        (1 - pow(cos(iota)*cos(theta) - \
+cos(phi)*sin(iota)*sin(theta),2)))/16. - 
+     (3*mu*r*pow(M,-3)*(3 + 2*log(1 - 2*M*pow(r,-1)) - 4*(1 - 2*M*pow(r,-1)) \
++ pow(1 - 2*M*pow(r,-1),2))*
+        (1 - pow(cos(iota)*cos(theta) - cos(phi)*sin(iota)*sin(theta),2)))/8.)*
+   (cos(theta)*pow(pow(sin(phi),2)*pow(sin(theta),2) + \
+pow(cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta),2),-1)*sin(phi)*
+      (cos(theta)*sin(iota) + cos(iota)*cos(phi)*sin(theta)) - 
+     pow(pow(sin(phi),2)*pow(sin(theta),2) + pow(cos(theta)*sin(iota) + \
+cos(iota)*cos(phi)*sin(theta),2),-1)*sin(phi)*sin(theta)*
+      (cos(iota)*cos(phi)*cos(theta) - sin(iota)*sin(theta)))\
+\>", "Output",
+ CellChangeTimes->{3.7458537710675983`*^9, 3.74585462068917*^9, 
+  3.7458547858820267`*^9, 3.745855098876074*^9},
+ FontSize->12]
+}, Open  ]]
+},
+WindowSize->{1121, 975},
+WindowMargins->{{Automatic, -1920}, {Automatic, 0}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 194, 5, 49, "Input"],
+Cell[755, 27, 8039, 250, 631, "Input"],
+Cell[CellGroupData[{
+Cell[8819, 281, 1025, 32, 54, "Input"],
+Cell[9847, 315, 7071, 122, 1096, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16955, 442, 963, 36, 34, "Input"],
+Cell[17921, 480, 1460, 25, 229, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19418, 510, 845, 31, 34, "Input"],
+Cell[20266, 543, 933, 17, 144, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21236, 565, 841, 31, 34, "Input"],
+Cell[22080, 598, 957, 17, 161, "Output"]
+}, Open  ]]
+}
+]
+*)
+
