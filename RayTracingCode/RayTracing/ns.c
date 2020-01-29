@@ -197,8 +197,8 @@ double emissivity(double energy, double angle_phi, double angle_theta,
       {
           // (1) Blackbody:
           double Tbbsur = Tbb*8.09*pow(Jsquared,(1/8.)); //the factor of ~8 comes about
-          //because average value of J^1/4 is ~0.12. Putting in this factor
-          //callibrates it so that average temperatures are of order Tbb;
+          //because the max value of J^1/4 for an aligned dipole is ~0.12. Putting in this factor
+          //callibrates it so that temperatures are actually Tbb;
           intensity=energy*energy*energy/(exp(energy/Tbbsur)-1.0);
       }
       else{
